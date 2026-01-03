@@ -1,72 +1,228 @@
-# 🎄 Grand Luxury Interactive 3D Christmas Tree
+# 🎂 Birthday Surprise - Interactive 3D Experience
 
-> 一个基于 **React**, **Three.js (R3F)** 和 **AI 手势识别** 的高保真 3D 圣诞树 Web 应用。
+> A magical 3D interactive birthday experience built with **React**, **Three.js (R3F)**, and **AI gesture recognition**. Create a stunning 3D tree decorated with your photos that responds to hand movements!
 
-这个项目不仅仅是一棵树，它是一个承载记忆的交互式画廊。成百上千个粒子、璀璨的彩灯和悬浮的拍立得照片共同组成了一棵奢华的圣诞树。用户可以通过手势控制树的形态（聚合/散开）和视角旋转，体验电影级的视觉盛宴。
+This is a special birthday surprise project where you can display your memories in a beautiful 3D interactive tree. The tree is decorated with hundreds of your photos, sparkling particles, and birthday decorations. Control it with hand gestures - no mouse needed!
 
-![Project Preview](public/preview.png)
-*(注：建议在此处上传一张你的项目运行截图)*
+## ✨ Features
 
-## ✨ 核心特性
+* **Magical 3D Experience**: Thousands of glowing particles form a beautiful tree structure with dynamic lighting and bloom effects
+* **Photo Gallery**: Your photos appear as floating polaroid-style ornaments throughout the tree
+* **AI Gesture Control**: Use your hands to control the tree - open palm to disperse, closed fist to assemble, move hand to rotate
+* **Birthday Theme**: Pink, purple, and gold colors with birthday decorations and a cake on top
+* **Background Music**: Add your favorite music to make it even more special
+* **Fully Customizable**: Easy to add your own photos, music, and adjust settings
 
-* **极致视觉体验**：由 45,000+ 个发光粒子组成的树身，配合动态光晕 (Bloom) 和辉光效果，营造梦幻氛围。
-* **记忆画廊**：照片以“拍立得”风格悬浮在树上，每一张都是一个独立的发光体，支持双面渲染。
-* **AI 手势控制**：无需鼠标，通过摄像头捕捉手势即可控制树的形态（聚合/散开）和视角旋转。
-* **丰富细节**：包含动态闪烁的彩灯、飘落的金银雪花、以及随机分布的圣诞礼物和糖果装饰。
-* **高度可定制**：**支持用户轻松替换为自己的照片，并自由调整照片数量。**
+## 🛠️ Technology Stack
 
-## 🛠️ 技术栈
+* **Framework**: React 18, Vite
+* **3D Engine**: React Three Fiber (Three.js)
+* **Libraries**: @react-three/drei, Maath
+* **Post-processing**: @react-three/postprocessing
+* **AI Vision**: MediaPipe Tasks Vision (Google)
 
-* **框架**: React 18, Vite
-* **3D 引擎**: React Three Fiber (Three.js)
-* **工具库**: @react-three/drei, Maath
-* **后期处理**: @react-three/postprocessing
-* **AI 视觉**: MediaPipe Tasks Vision (Google)
+## 🚀 Quick Start Guide
 
-## 🚀 快速开始
+### Prerequisites
 
-### 1. 环境准备
-确保你的电脑已安装 [Node.js](https://nodejs.org/) (建议 v18 或更高版本)。
+Make sure you have [Node.js](https://nodejs.org/) installed (version 18 or higher recommended).
 
-### 2. 安装依赖
-在项目根目录下打开终端，运行：```bash npm install
-### 3. 启动项目
+### Step 1: Install Dependencies
+
+Open a terminal in the project directory and run:
+
+```bash
+npm install
+```
+
+This will install all required packages. It may take a few minutes.
+
+### Step 2: Add Your Photos and Videos
+
+1. Navigate to the `public/photos/` folder
+2. Add your media files with these names:
+   - **`top.jpg` or `top.mp4`** - This will appear on the birthday cake at the top (use a special photo or video!)
+   - **`1.jpg`/`1.mp4`, `2.jpg`/`2.mp4`, `3.jpg`/`3.mp4`** ... up to **`31.jpg`/`31.mp4`** - These will appear as ornaments on the tree
+
+**Media Tips:**
+- **Photos**: Use square or 4:3 ratio images for best results
+- **Videos**: MP4 format, muted automatically, will loop
+- Keep file sizes reasonable (photos under 500KB, videos under 5MB for best performance)
+- The system automatically detects whether you have a .jpg or .mp4 file
+- If both exist, it will prefer the video (.mp4)
+- You can mix photos and videos - some can be .jpg, others can be .mp4
+- You can have more or fewer files (see customization below)
+
+### Step 2.5: Add Music (Optional but Recommended!)
+
+1. Navigate to the `public/music/` folder
+2. Add your music file and name it: **`birthday-song.mp3`**
+3. Supported formats: MP3, OGG, WAV (MP3 recommended)
+4. Keep file size under 5MB for best performance
+
+**Music Tips:**
+- Use happy birthday songs, romantic music, or your favorite song together
+- The music will loop automatically
+- Click the music button (top-right) to play/pause
+- Music will auto-play when the tree forms (after first click)
+
+### Step 3: Adjust Photo Count (Optional)
+
+If you have more or fewer than 31 photos:
+
+1. Open `src/App.tsx`
+2. Find line 20: `const TOTAL_NUMBERED_PHOTOS = 31;`
+3. Change `31` to match your number of photos (e.g., if you have 50 photos, change to `50`)
+
+### Step 4: Run the Project
+
+Start the development server:
+
+```bash
 npm run dev
-### 🖼️ 自定义照片
-### 1. 准备照片
-找到项目目录下的 public/photos/ 文件夹。
+```
 
-顶端大图/封面图：命名为 top.jpg（将显示在树顶的立体五角星上）。
+The app will open in your browser automatically (usually at `http://localhost:5173`).
 
-树身照片：命名为 1.jpg, 2.jpg, 3.jpg ... 依次类推。
+### Step 5: Test It Out!
 
-建议：使用正方形或 4:3 比例的图片，文件大小不宜过大（建议单张 500kb 以内以保证流畅度）
-### 2. 替换照片
-直接将你自己的照片复制到 public/photos/ 文件夹中，覆盖原有的图片即可。请保持文件名格式不变（1.jpg, 2.jpg 等）。
-### 3. 修改照片数量 (增加或减少)
-如果你放入了更多照片（例如从默认的 31 张增加到 100 张），需要修改代码以通知程序加载它们。
-打开文件：src/App.tsx
-找到大约 第 19 行 的代码：// --- 动态生成照片列表 (top.jpg + 1.jpg 到 31.jpg) ---
-const TOTAL_NUMBERED_PHOTOS = 31; // <--- 修改这个数字！
-### 🖐️ 手势控制说明
-* **本项目内置了 AI 手势识别系统，请站在摄像头前进行操作（屏幕右下角有 DEBUG 按钮可查看摄像头画面）**：
-🖐 张开手掌 (Open Palm)	Disperse (散开)	圣诞树炸裂成漫天飞舞的粒子和照片
-✊ 握紧拳头 (Closed Fist)	Assemble (聚合)	所有元素瞬间聚合成一棵完美的圣诞树
-👋 手掌左右移动	旋转视角	手向左移，树向左转；手向右移，树向右转
-👋 手掌上下移动	俯仰视角	手向上移，视角抬高；手向下移，视角降低
-### ⚙️ 进阶配置
-* **如果你熟悉代码，可以在 src/App.tsx 中的 CONFIG 对象里调整更多视觉参数**：
-  const CONFIG = {
-  colors: { ... }, // 修改树、灯光、边框的颜色
-  counts: {
-    foliage: 15000,   // 修改树叶粒子数量 (配置低可能会卡)
-    ornaments: 300,   // 修改悬挂的照片/拍立得数量
-    lights: 400       // 修改彩灯数量
-  },
-  tree: { height: 22, radius: 9 }, // 修改树的大小
-  // ...
-};
-### 📄 License
-MIT License. Feel free to use and modify for your own holiday celebrations!
-### Merry Christmas! 🎄✨
+1. **Allow Camera Access**: When prompted, allow the browser to access your camera
+2. **Wait for AI to Load**: You'll see status messages at the top - wait for "AI READY: SHOW HAND"
+3. **Try the Gestures**:
+   - 🖐 **Open Palm** → Disperses the tree (photos and particles fly apart)
+   - ✊ **Closed Fist** → Assembles the tree (everything comes together)
+   - 👋 **Move Hand Left/Right** → Rotates the view
+4. **Debug Mode**: Click the "🛠 DEBUG" button to see the camera view and hand detection
 
+## 🎮 Controls
+
+### Hand Gestures (AI Detection)
+- **🖐 Open Palm**: Disperse - Makes the tree explode into particles
+- **✊ Closed Fist**: Assemble - Forms the tree back together
+- **👋 Hand Movement**: Rotate - Move your hand left/right to rotate the view
+
+### Mouse/Keyboard
+- **Click and Drag**: Rotate the camera (when not using gestures)
+- **Scroll Wheel**: Zoom in/out
+- **"🎂 Create Magic" Button**: Manually toggle between disperse/assemble
+- **"🛠 DEBUG" Button**: Toggle camera view overlay
+
+## 📸 Adding Your Photos
+
+### Quick Guide
+
+1. **Prepare your photos**: Resize them to be square or 4:3 ratio (recommended: 800x800px or 1200x900px)
+2. **Name them correctly**:
+   - `top.jpg` - Special photo for the cake
+   - `1.jpg`, `2.jpg`, `3.jpg`, etc. - Tree ornaments
+3. **Copy to folder**: Place all photos in `public/photos/`
+4. **Update count**: If you have a different number, update `TOTAL_NUMBERED_PHOTOS` in `App.tsx`
+
+### Example Structure
+
+```
+public/photos/
+  ├── top.jpg      (special photo)
+  ├── 1.jpg
+  ├── 2.jpg
+  ├── 3.jpg
+  ...
+  └── 31.jpg
+```
+
+## ⚙️ Customization
+
+### Change Colors
+
+In `src/App.tsx`, find the `CONFIG` object (around line 28) and modify the colors:
+
+```typescript
+colors: {
+  primary: '#FF69B4',    // Main tree color (hot pink)
+  secondary: '#BA55D3',  // Secondary color (purple)
+  gold: '#FFD700',       // Gold accents
+  // ... more colors
+}
+```
+
+### Adjust Particle Counts
+
+In the same `CONFIG` object:
+
+```typescript
+counts: {
+  foliage: 15000,      // Tree particles (lower = better performance)
+  ornaments: 300,      // Number of photo ornaments
+  elements: 200,       // Birthday decorations
+  lights: 400          // Party lights
+}
+```
+
+**Performance Note**: Lower numbers = better performance on slower devices
+
+### Change Tree Size
+
+```typescript
+tree: { 
+  height: 22,  // Tree height
+  radius: 9    // Tree width
+}
+```
+
+## 🐛 Troubleshooting
+
+### Camera Not Working
+- **Check permissions**: Make sure you allowed camera access in your browser
+- **Try different browser**: Chrome or Edge work best
+- **Check camera**: Make sure no other app is using your camera
+
+### Photos Not Showing
+- **Check file names**: Must be exactly `top.jpg`, `1.jpg`, `2.jpg`, etc.
+- **Check file location**: Photos must be in `public/photos/` folder
+- **Check file format**: Use JPG format
+- **Check console**: Open browser DevTools (F12) to see any errors
+
+### Performance Issues
+- **Lower particle count**: Reduce `foliage` count in CONFIG
+- **Reduce photo count**: Use fewer photos
+- **Close other apps**: Free up computer resources
+- **Use smaller photos**: Compress images to smaller file sizes
+
+### AI Not Detecting Gestures
+- **Enable DEBUG mode**: Click the DEBUG button to see camera view
+- **Check lighting**: Make sure you're in a well-lit area
+- **Show full hand**: Make sure your entire hand is visible to the camera
+- **Wait for "AI READY"**: Make sure the status says "AI READY: SHOW HAND"
+
+## 📦 Building for Production
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+The built files will be in the `dist/` folder. You can deploy this to any static hosting service (Netlify, Vercel, GitHub Pages, etc.).
+
+## 🎉 Tips for the Best Experience
+
+1. **Good Lighting**: Make sure you're in a well-lit room for gesture detection
+2. **Stand Back**: Give the camera a good view of your hands
+3. **Use Full Screen**: Press F11 for fullscreen mode
+4. **Add Personal Touch**: Use your favorite photos together
+5. **Test First**: Try it yourself before showing it to your girlfriend!
+
+## 📝 Notes
+
+- The AI model downloads on first use (may take a minute)
+- Camera access is required for gesture control
+- Works best in Chrome or Edge browsers
+- For best performance, use a modern computer with a dedicated graphics card
+
+## 🎂 Happy Birthday!
+
+Enjoy creating this magical surprise! The tree will display all your memories together in a beautiful, interactive 3D experience.
+
+---
+
+**Made with ❤️ for a special birthday surprise**
