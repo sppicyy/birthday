@@ -1,0 +1,15 @@
+[build]
+  # Build command
+  command = "npm install && npm run build"
+  # Directory to publish (output directory)
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Redirect rules for SPA (Single Page Application)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
